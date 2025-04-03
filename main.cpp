@@ -151,28 +151,28 @@ void guesser(void) {
 void doGame(string correct, int guessNumber, int swapNumber) {
 	string jumbled = jumbler(correct, swapNumber);
 	string answer;
-	bool signal;
+	bool fail;
 	cout << "\nI give you a jumbled word \'" << jumbled << "\' ." << endl;
 	for (int i = 0; i < guessNumber; i++) {
 		cout << '[' << i+1 << '/' << guessNumber << ']' << " Guess the original word: ";
 		cin >> answer;
-		signal = false;
+		fail = (answer.size() != correct.size()) ? true : false;
 		cout << ">> [";
 		for (int j = 0; j < correct.size(); j++) {
 			if (answer.size() <= j) {
 				cout << '-';
-				signal = true;
+				fail = true;
 				continue;
 			}
 			else if (answer[j] == correct[j])
 				cout << answer[j];
 			else {
 				cout << '-';
-				signal = true;
+				fail = true;
 			}
 		}
 		cout << "]\n" << endl;
-		if (signal == false) {
+		if (fail == false) {
 			cout << "Congratulation! You got the answer right!" << endl;
 			return;
 		}
