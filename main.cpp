@@ -157,7 +157,7 @@ void doGame(string correct, int guessNumber, int swapNumber) {
 		cout << '[' << i+1 << '/' << guessNumber << ']' << " Guess the original word: ";
 		cin >> answer;
 		signal = false;
-		cout << "\n>> [";
+		cout << ">> [";
 		for (int j = 0; j < correct.size(); j++) {
 			if (answer.size() <= j) {
 				cout << '-';
