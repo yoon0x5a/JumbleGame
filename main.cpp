@@ -1,8 +1,9 @@
 #include "std_lib_facilities.h"
-#define EASY_MODE_SWAP 2
-#define EASY_MODE_GUESS 3
-#define HARD_MODE_SWAP 4
-#define HARD_MODE_GUESS 5
+
+const int easyModeSwap = 2;
+const int easyModeGuess = 3;
+const int hardModeSwap = 4;
+const int hardModeGuess = 5;
 
 void wordInitializer(void);
 void assorter(string toAdd);
