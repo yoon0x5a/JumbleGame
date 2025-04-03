@@ -16,7 +16,7 @@ void doGame(string correct, int guessNumber, int swapNumber);
 
 vector<string> wordList = {"add", "bang", "base", "chain", "charter", "coast", "coincide", "command", "commerce", "corner", "craftsman", "deficiency", "deliver", "depend", "desk", "dimension", "dirty", "disaster", "drift", "duck", "economic", "feign", "gown", "gregarious", "highway", "holiday", "huge", "midnight", "mutual", "professional", "progress", "recommend", "relevance", "road", "scatter", "score", "scrap", "shift", "sigh", "spell", "spit", "table", "umbrella", "unlike", "van", "veil", "venture", "visit", "vote", "wriggle"};
 
-vector<string> shortWord; // 1-5 letters
+vector<string> shortWord; // 2-5 letters
 vector<string> longWord; // from 5 letters
 
 int main(void) {
@@ -87,7 +87,7 @@ void listManager(void) {
 		}
 		switch (choice) {
 		case 1:
-			cout << "A total of " << wordList.size() << " words are avaliable:" << endl;
+			cout << "\nA total of " << wordList.size() << " words are avaliable:" << endl;
 			for (string s : wordList)
 				cout << s << endl;
 			break;
@@ -135,10 +135,10 @@ void guesser(void) {
 		}
 		switch (choice) {
 		case 1:
-			doGame(shortWord[randint(shortWord.size() - 1)], EASY_MODE_GUESS, EASY_MODE_SWAP);
+			doGame(shortWord[randint(shortWord.size() - 1)], easyModeGuess, easyModeSwap);
 			break;
 		case 2:
-			doGame(longWord[randint(longWord.size() - 1)], HARD_MODE_GUESS, HARD_MODE_SWAP);
+			doGame(longWord[randint(longWord.size() - 1)], hardModeGuess, hardModeSwap);
 			break;
 		default:
 			break;
@@ -151,7 +151,7 @@ void doGame(string correct, int guessNumber, int swapNumber) {
 	string jumbled = jumbler(correct, swapNumber);
 	string answer;
 	bool signal;
-	cout << "I give you a jumbled word \'" << jumbled << "\' ." << endl;
+	cout << "\nI give you a jumbled word \'" << jumbled << "\' ." << endl;
 	for (int i = 0; i < guessNumber; i++) {
 		cout << '[' << i+1 << '/' << guessNumber << ']' << " Guess the original word: ";
 		cin >> answer;
