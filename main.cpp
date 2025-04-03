@@ -22,6 +22,7 @@ vector<string> longWord; // from 5 letters
 int main(void) {
 	wordInitializer();
 	initialMenu();
+	return 0;
 }
 
 void wordInitializer(void) {
