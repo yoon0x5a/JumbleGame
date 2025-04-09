@@ -8,11 +8,13 @@ const int hardModeGuess = 5;
 void wordInitializer(void);
 void assorter(string toAdd);
 void wordAdder(void);
+int selector(void);
 void listManager(void);
 string jumbler(string quest, int swapNumber);
 void initialMenu(void);
 void guesser(void);
 void doGame(string correct, int guessNumber, int swapNumber);
+
 
 vector<string> wordList = {"add", "bang", "base", "chain", "charter", "coast", "coincide", "command", "commerce", "corner", "craftsman", "deficiency", "deliver", "depend", "desk", "dimension", "dirty", "disaster", "drift", "duck", "economic", "feign", "gown", "gregarious", "highway", "holiday", "huge", "midnight", "mutual", "professional", "progress", "recommend", "relevance", "road", "scatter", "score", "scrap", "shift", "sigh", "spell", "spit", "table", "umbrella", "unlike", "van", "veil", "venture", "visit", "vote", "wriggle"};
 
@@ -42,6 +44,20 @@ void assorter(string toAdd) {
 	return;
 }
 
+int selector(void) {
+	int choice = 0;
+	while (choice != 1 && choice != 2 && choice != 3) {
+		cout << "Choose an option (1-3) : ";
+		cin >> choice;
+		// cin에 다른 자료형 입력시 버퍼 비우기
+		while (!cin) {
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		}
+	}
+	return choice;
+}
+
 void initialMenu(void) {
 	int choice;
 	while (true) {
@@ -50,13 +66,10 @@ void initialMenu(void) {
 		cout << "1. Manage List" << endl;
 		cout << "2. Solve Puzzle" << endl;
 		cout << "3. Exit" << endl << endl;
-		while (choice != 1 && choice != 2) {
-			cout << "Choose an option (1-3) : ";
-			cin >> choice;
-			if (choice == 3) {
-				cout << "\nGood bye!!!" << endl;
-				exit(0);
-			}
+		choice = selector();
+		if (choice == 3) {
+			cout << "\nGood bye!!!" << endl;
+			exit(0);
 		}
 		switch (choice) {
 		case 1:
@@ -80,12 +93,9 @@ void listManager(void) {
 		cout << "1. Print Words" << endl;
 		cout << "2. Add Word" << endl;
 		cout << "3. Return" << endl << endl;
-		while (choice != 1 && choice != 2) {
-			cout << "Choose an option (1-3) : ";
-			cin >> choice;
-			if (choice == 3)
-				return;
-		}
+		choice = selector();
+		if (choice == 3)
+			return;
 		switch (choice) {
 		case 1:
 			cout << "\nA total of " << wordList.size() << " words are avaliable:" << endl;
@@ -128,12 +138,9 @@ void guesser(void) {
 		cout << "1. Easy Mode" << endl;
 		cout << "2. Hard Mode" << endl;
 		cout << "3. Return" << endl << endl;
-		while (choice != 1 && choice != 2) {
-			cout << "Choose an option (1-3) : ";
-			cin >> choice;
-			if (choice == 3)
-				return;
-		}
+		choice = selector();
+		if (choice == 3)
+			return;
 		switch (choice) {
 		case 1:
 			doGame(shortWord[randint(shortWord.size() - 1)], easyModeGuess, easyModeSwap);
